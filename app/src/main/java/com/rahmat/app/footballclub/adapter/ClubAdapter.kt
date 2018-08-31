@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.rahmat.app.footballclub.DetailActivity
+import com.rahmat.app.footballclub.feature.main.DetailActivity
 import com.rahmat.app.footballclub.R
 import com.rahmat.app.footballclub.entity.Club
 import org.jetbrains.anko.*

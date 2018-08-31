@@ -13,7 +13,13 @@ t
 Dapp/src/main/java/com/rahmat/app/footballclub/adapter/ClubAdapter.kt,2/5/2508b26543ab6b09f3cf7e1365dc2934b286c05c
 O
 app/src/main/res/values/ids.xml,b/d/bd506d672607407c2d0357a9f7c1e4e7fdb6c3ad
-m
-=app/src/main/java/com/rahmat/app/footballclub/MainActivity.kt,4/d/4d768c1c8c9832b274ee4b591eeaa55ce177c673
-o
-?app/src/main/java/com/rahmat/app/footballclub/DetailActivity.kt,1/5/1565d66c9e8d3b18c875485e13db6327a0236cab
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+R
+"app/src/main/res/values/colors.xml,9/6/969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
+|
+Lapp/src/main/java/com/rahmat/app/footballclub/feature/detail/MainActivity.kt,0/7/07ebd567bae0428c22e3ef95b31a238e012d4051
+[
++app/src/main/res/layout/activity_detail.xml,f/2/f22ce1ff238aad049c933bb28da5033b974b1b1a
+|
+Lapp/src/main/java/com/rahmat/app/footballclub/feature/main/DetailActivity.kt,4/9/496dbbf301ffb30e5d66e45fb2d4b781eedd1abf
