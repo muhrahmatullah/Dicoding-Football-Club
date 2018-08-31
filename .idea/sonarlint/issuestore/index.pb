@@ -17,3 +17,5 @@ m
 =app/src/main/java/com/rahmat/app/footballclub/MainActivity.kt,4/d/4d768c1c8c9832b274ee4b591eeaa55ce177c673
 o
 ?app/src/main/java/com/rahmat/app/footballclub/DetailActivity.kt,1/5/1565d66c9e8d3b18c875485e13db6327a0236cab
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e

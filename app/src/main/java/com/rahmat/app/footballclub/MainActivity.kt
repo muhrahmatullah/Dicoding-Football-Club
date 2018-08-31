@@ -12,7 +12,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class MainActivity : AppCompatActivity(), AnkoLogger {
 
-    var clubList : ArrayList<Club> = ArrayList()
+    var clubList : ArrayList<Club> = arrayListOf()
 
     private val rvFootball by lazy {
         find<RecyclerView>(R.id.rv_football)
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         for(i in name.indices){
             clubList.add(Club(name[i], image.getResourceId(i,0), desc[i]))
         }
+        image.recycle()
     }
 
     class MainActivityUI : AnkoComponent<MainActivity>{

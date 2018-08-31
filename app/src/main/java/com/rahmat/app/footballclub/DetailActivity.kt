@@ -25,12 +25,12 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         DetailUi().setContentView(this)
         val img = findViewById<ImageView>(R.id.img_dtl)
-        val txt_club = findViewById<TextView>(R.id.txt_name_dtl)
-        val txt_detail = findViewById<TextView>(R.id.txt_desc_dtl)
+        val txtClub = findViewById<TextView>(R.id.txt_name_dtl)
+        val txtDetail = findViewById<TextView>(R.id.txt_desc_dtl)
         club = intent.getParcelableExtra("club")
-        txt_club.text = club.name
-        txt_club.typeface = Typeface.DEFAULT_BOLD
-        txt_detail.text = club.detail
+        txtClub.text = club.name
+        txtClub.typeface = Typeface.DEFAULT_BOLD
+        txtDetail.text = club.detail
         Glide.with(this)
                 .load(club.image)
                 .into(img)
