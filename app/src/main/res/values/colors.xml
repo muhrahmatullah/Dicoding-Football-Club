@@ -3,4 +3,7 @@
     <color name="colorPrimary">#12B23E</color>
     <color name="colorPrimaryDark">#237F04</color>
     <color name="colorAccent">#CC7F14</color>
+    <color name="upcoming_match">#2bfd06</color>
+    <color name="pass_match">#fd0606</color>
+    <color name="line_separator">#bfbcbc</color>
 </resources>
