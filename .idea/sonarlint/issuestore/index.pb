@@ -5,8 +5,6 @@ Y
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 S
 #app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
-l
-<app/src/main/java/com/rahmat/app/footballclub/entity/Club.kt,d/2/d2b77eebf72d4dc07478528fd95865fe09a64f77
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 t
@@ -29,13 +27,11 @@ z
 Japp/src/main/java/com/rahmat/app/footballclub/feature/main/MainActivity.kt,5/2/523725ba4e2f524a43f5cae3c896c6f4134c28ef
 r
 Bapp/src/main/java/com/rahmat/app/footballclub/rest/FootballRest.kt,a/b/abed980ee09b88bc68649620516c70378c64edc0
-t
-Dapp/src/main/java/com/rahmat/app/footballclub/model/FootballMatch.kt,5/5/55a17c37094ef44c53e804a032a2a189c3307ca6
 ‚
 Rapp/src/main/java/com/rahmat/app/footballclub/entity/repository/MatchRepository.kt,1/1/11ca4e0ea55676faffc93bf407e9e5da3833650b
-l
-<app/src/main/java/com/rahmat/app/footballclub/model/Event.kt,f/6/f6acec68cc316422c864997a48c095eed6b50927
 z
 Japp/src/main/java/com/rahmat/app/footballclub/feature/main/MainContract.kt,2/f/2f66df316dad2a82870115a32e72b5c6faadef08
 {
 Kapp/src/main/java/com/rahmat/app/footballclub/feature/main/MainPresenter.kt,5/7/5735532e11dfec8811f82e00b238377c8b37add7
+R
+"app/src/main/res/values/styles.xml,f/7/f79cc2688e29fcbc286fda14ae07b27c9e83690f
