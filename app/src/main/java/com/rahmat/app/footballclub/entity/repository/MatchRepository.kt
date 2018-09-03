@@ -15,4 +15,5 @@ interface MatchRepository {
 
     fun getUpcomingMatch(id : String) : Flowable<FootballMatch>
 
+    fun getEventById(id: String) : Flowable<FootballMatch>
 }

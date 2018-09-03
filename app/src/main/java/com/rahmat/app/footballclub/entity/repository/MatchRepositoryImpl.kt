@@ -10,6 +10,8 @@ import io.reactivex.Flowable
  */
 class MatchRepositoryImpl(private val footballRest: FootballRest) : MatchRepository {
 
+    override fun getEventById(id: String): Flowable<FootballMatch> = footballRest.getEventById(id)
+
     override fun getUpcomingMatch(id: String): Flowable<FootballMatch> = footballRest.getUpcomingMatch(id)
 
     override fun getFootballMatch(id: String): Flowable<FootballMatch> = footballRest.getLastmatch(id)
