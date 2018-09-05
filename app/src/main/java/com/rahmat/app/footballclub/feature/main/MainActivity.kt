@@ -8,7 +8,7 @@ import com.rahmat.app.footballclub.feature.lastmatch.LastMatchFragment
 import com.rahmat.app.footballclub.feature.upcomingmatch.UpcomingMatchFragment
 import kotlinx.android.synthetic.main.home_activity.*
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), MainContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

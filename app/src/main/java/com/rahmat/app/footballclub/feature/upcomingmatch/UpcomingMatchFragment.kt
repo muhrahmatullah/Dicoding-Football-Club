@@ -19,6 +19,8 @@ import com.rahmat.app.footballclub.feature.lastmatch.LastMatchPresenter
 import com.rahmat.app.footballclub.feature.lastmatch.MatchContract
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
+import com.rahmat.app.footballclub.utils.AppSchedulerProvider
+import com.rahmat.app.footballclub.utils.SchedulerProvider
 import kotlinx.android.synthetic.main.fragment_upcoming_match.*
 
 
@@ -56,7 +58,8 @@ class UpcomingMatchFragment : Fragment(), MatchContract.View {
         super.onActivityCreated(savedInstanceState)
         val service = FootballApiService.getClient().create(FootballRest::class.java)
         val request = MatchRepositoryImpl(service)
-        mPresenter = UpcomingMatchPresenter(this, request)
+        val scheduler = AppSchedulerProvider()
+        mPresenter = UpcomingMatchPresenter(this, request, scheduler)
         mPresenter.getFootballMatchData()
     }
 }

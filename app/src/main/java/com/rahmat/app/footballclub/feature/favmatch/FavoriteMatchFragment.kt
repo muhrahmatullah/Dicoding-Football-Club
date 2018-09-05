@@ -18,6 +18,7 @@ import com.rahmat.app.footballclub.extensions.show
 import com.rahmat.app.footballclub.feature.lastmatch.MatchContract
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
+import com.rahmat.app.footballclub.utils.AppSchedulerProvider
 import kotlinx.android.synthetic.main.fragment_favorite_match.*
 
 class FavoriteMatchFragment : Fragment(), FavoriteMatchContract.View {
@@ -47,7 +48,8 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchContract.View {
         val service = FootballApiService.getClient().create(FootballRest::class.java)
         val request = MatchRepositoryImpl(service)
         val localRepositoryImpl = LocalRepositoryImpl(context!!)
-        mPresenter = FavoriteMatchPresenter(this, request, localRepositoryImpl)
+        val scheduler = AppSchedulerProvider()
+        mPresenter = FavoriteMatchPresenter(this, request, localRepositoryImpl, scheduler)
         mPresenter.getFootballMatchData()
 
         swiperefresh.setOnRefreshListener {
