@@ -13,26 +13,4 @@ import io.reactivex.schedulers.Schedulers
 class MainPresenter(val mView : MainContract.View, val matchRepositoryImpl: MatchRepositoryImpl) : MainContract.Presenter{
 
     val compositeDisposable = CompositeDisposable()
-
-    override fun getFootballUpcomingData() {
-        mView.showLoading()
-        compositeDisposable.add(matchRepositoryImpl.getUpcomingMatch("4328")
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe{
-                    mView.displayFootballMatch(it.events)
-                    mView.hideLoading()
-                })
-    }
-
-    override fun getFootballMatchData() {
-        mView.showLoading()
-        compositeDisposable.add(matchRepositoryImpl.getFootballMatch("4328")
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe{
-                    mView.displayFootballMatch(it.events)
-                    mView.hideLoading()
-                })
-    }
 }
