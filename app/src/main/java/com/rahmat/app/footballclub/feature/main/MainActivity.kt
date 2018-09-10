@@ -4,10 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.rahmat.app.footballclub.R
 import com.rahmat.app.footballclub.feature.MatchesFragment
-import com.rahmat.app.footballclub.feature.TeamsFragment
+import com.rahmat.app.footballclub.feature.team.TeamsFragment
 import com.rahmat.app.footballclub.feature.favmatch.FavoriteMatchFragment
-import com.rahmat.app.footballclub.feature.lastmatch.LastMatchFragment
-import com.rahmat.app.footballclub.feature.upcomingmatch.UpcomingMatchFragment
 import kotlinx.android.synthetic.main.bottom_nav_view.*
 import kotlinx.android.synthetic.main.home_activity.*
 

@@ -1,4 +1,4 @@
-package com.rahmat.app.footballclub.feature
+package com.rahmat.app.footballclub.feature.team
 
 
 import android.os.Bundle
@@ -9,12 +9,24 @@ import android.view.ViewGroup
 
 import com.rahmat.app.footballclub.R
 
-class TeamsFragment : Fragment() {
+class TeamsFragment : Fragment(), TeamsContract.View {
+
+
+    override fun displayTeams() {
+
+    }
+
+    override fun hideLoading() {
+
+    }
+
+    override fun showLoading() {
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_teams, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_teams, container, false)
     }
 }
