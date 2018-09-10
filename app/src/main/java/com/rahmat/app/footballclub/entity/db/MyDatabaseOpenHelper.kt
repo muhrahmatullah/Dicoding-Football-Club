@@ -28,10 +28,15 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
                 FavoriteMatch.EVENT_ID to TEXT + UNIQUE,
                 FavoriteMatch.HOME_TEAM_ID to TEXT,
                 FavoriteMatch.AWAY_TEAM_ID to TEXT)
+        p0.createTable(FavoriteTeam.TEAM_TABLE, true,
+                FavoriteTeam.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                FavoriteTeam.TEAM_ID to TEXT,
+                FavoriteTeam.TEAM_IMAGE to TEXT)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {
         p0.dropTable(FavoriteMatch.TABLE_FAVORITE, true)
+        p0.dropTable(FavoriteTeam.TEAM_TABLE, true)
     }
 }
 // Access property for Context

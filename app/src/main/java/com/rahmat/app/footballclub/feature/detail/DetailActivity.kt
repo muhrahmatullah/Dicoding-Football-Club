@@ -13,6 +13,7 @@ import com.rahmat.app.footballclub.entity.Team
 import com.rahmat.app.footballclub.entity.db.FavoriteMatch
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
+import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -48,7 +49,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val service = FootballApiService.getClient().create(FootballRest::class.java)
-        val request = MatchRepositoryImpl(service)
+        val request = TeamRepositoryImpl(service)
         val localRepo = LocalRepositoryImpl(applicationContext)
         mPresenter = DetailPresenter(this, request, localRepo)
 
@@ -131,5 +132,10 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     override fun setFavoriteState(favList: List<FavoriteMatch>) {
         if(!favList.isEmpty()) isFavorite = true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onDestroyPresenter()
     }
 }

@@ -15,6 +15,4 @@ class MatchRepositoryImpl(private val footballRest: FootballRest) : MatchReposit
     override fun getUpcomingMatch(id: String): Flowable<FootballMatch> = footballRest.getUpcomingMatch(id)
 
     override fun getFootballMatch(id: String): Flowable<FootballMatch> = footballRest.getLastmatch(id)
-
-    override fun getTeams(id: String): Flowable<Teams> = footballRest.getTeam(id)
 }

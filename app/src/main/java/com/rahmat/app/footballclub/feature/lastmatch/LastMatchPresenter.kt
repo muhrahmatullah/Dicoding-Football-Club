@@ -25,4 +25,8 @@ class LastMatchPresenter(val mView :  MatchContract.View,
                     mView.hideLoading()
                 })
     }
+
+    override fun onDestroyPresenter() {
+        compositeDisposable.dispose()
+    }
 }

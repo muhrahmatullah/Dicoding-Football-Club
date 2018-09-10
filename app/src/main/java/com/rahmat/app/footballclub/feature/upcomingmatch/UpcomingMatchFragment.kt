@@ -62,4 +62,9 @@ class UpcomingMatchFragment : Fragment(), MatchContract.View {
         mPresenter = UpcomingMatchPresenter(this, request, scheduler)
         mPresenter.getFootballMatchData()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onDestroyPresenter()
+    }
 }

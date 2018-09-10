@@ -38,4 +38,8 @@ class FavoriteMatchPresenter(val mView: FavoriteMatchContract.View,
             mView.displayFootballMatch(eventList)
         }
     }
+
+    override fun onDestroyPresenter() {
+        compositeDisposable.dispose()
+    }
 }

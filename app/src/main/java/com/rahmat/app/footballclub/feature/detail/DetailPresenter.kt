@@ -3,6 +3,7 @@ package com.rahmat.app.footballclub.feature.detail
 import android.util.Log
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
+import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.feature.main.MainContract
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -11,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by muhrahmatullah on 01/09/18.
  */
-class DetailPresenter(val mView : DetailContract.View, val matchRepositoryImpl: MatchRepositoryImpl,
+class DetailPresenter(val mView : DetailContract.View, val teamRepositoryImpl: TeamRepositoryImpl,
                       val localRepositoryImpl: LocalRepositoryImpl) : DetailContract.Presenter {
     override fun deleteMatch(id: String) {
         localRepositoryImpl.deleteData(id)
@@ -26,7 +27,7 @@ class DetailPresenter(val mView : DetailContract.View, val matchRepositoryImpl: 
     }
 
     override fun getTeamsBadgeHome(id: String) {
-        compositeDisposable.add(matchRepositoryImpl.getTeams(id)
+        compositeDisposable.add(teamRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe{
@@ -37,11 +38,15 @@ class DetailPresenter(val mView : DetailContract.View, val matchRepositoryImpl: 
     val compositeDisposable = CompositeDisposable()
 
     override fun getTeamsBadgeAway(id:String) {
-        compositeDisposable.add(matchRepositoryImpl.getTeams(id)
+        compositeDisposable.add(teamRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe{
                     mView.displayTeamBadgeAway(it.teams[0])
                 })
+    }
+
+    override fun onDestroyPresenter() {
+        compositeDisposable.dispose()
     }
 }

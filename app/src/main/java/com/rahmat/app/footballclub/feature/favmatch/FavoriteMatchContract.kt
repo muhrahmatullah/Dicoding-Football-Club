@@ -15,6 +15,7 @@ interface FavoriteMatchContract {
 
     interface Presenter{
         fun getFootballMatchData()
+        fun onDestroyPresenter()
 
     }
 }

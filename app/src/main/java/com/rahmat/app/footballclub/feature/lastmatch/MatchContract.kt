@@ -14,6 +14,7 @@ interface MatchContract {
 
     interface Presenter{
         fun getFootballMatchData()
+        fun onDestroyPresenter()
 
     }
 }

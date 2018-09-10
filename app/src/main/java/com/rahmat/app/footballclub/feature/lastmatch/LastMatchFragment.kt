@@ -60,5 +60,9 @@ class LastMatchFragment : Fragment(), MatchContract.View {
         rvFootball.layoutManager = layoutManager
         rvFootball.adapter = ClubAdapter(matchList, context)
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onDestroyPresenter()
+    }
 
 }
