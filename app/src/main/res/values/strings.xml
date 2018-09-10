@@ -57,9 +57,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="last_match">Last Match</string>
-    <string name="upcoming_match">Upcoming Match</string>
-    <string name="saved_match">Saved Match</string>
+    <string name="last_match">Matches</string>
+    <string name="upcoming_match">Teams</string>
+    <string name="saved_match">Favorite</string>
 
 
 </resources>

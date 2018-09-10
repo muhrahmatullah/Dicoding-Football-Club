@@ -33,7 +33,6 @@ class LocalRepositoryImpl(private val context: Context) : LocalRepository {
         }
 
     }
-
     override fun deleteTeamData(teamId: String) {
         context.database.use{
             delete(FavoriteTeam.TEAM_TABLE, "(TEAM_ID = {id})",
