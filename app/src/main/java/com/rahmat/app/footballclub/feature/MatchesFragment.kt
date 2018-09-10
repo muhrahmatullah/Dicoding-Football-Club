@@ -28,7 +28,7 @@ class MatchesFragment : Fragment() {
         val vPager = view.findViewById<ViewPager>(R.id.viewpager)
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
         val adapter = ViewPagerAdapter(childFragmentManager)
-        adapter.populateFragment(LastMatchFragment(), "Last")
+        adapter.populateFragment(LastMatchFragment(), "Last Match")
         adapter.populateFragment(UpcomingMatchFragment(), "Upcoming")
         vPager.adapter = adapter
         tabs.setupWithViewPager(vPager)
