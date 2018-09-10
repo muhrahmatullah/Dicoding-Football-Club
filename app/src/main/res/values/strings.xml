@@ -61,5 +61,13 @@
     <string name="upcoming_match">Teams</string>
     <string name="saved_match">Favorite</string>
 
+    <array name="leagueArray">
+        <item>English Premier League</item>
+        <item>German Bundesliga</item>
+        <item>Italian Serie A</item>
+        <item>French Ligue 1</item>
+        <item>Spanish La Liga</item>
+        <item>Netherlands Eredivisie</item>
+    </array>
 
 </resources>

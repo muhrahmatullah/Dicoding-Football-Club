@@ -19,8 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Documents/ic_last_match.png" />
-                                      <entry key="outputName" value="ic_action_last" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Documents/menu_teams.png" />
+                                      <entry key="outputName" value="ic_menu_teams" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="b7b7b7" />
                                     </map>
