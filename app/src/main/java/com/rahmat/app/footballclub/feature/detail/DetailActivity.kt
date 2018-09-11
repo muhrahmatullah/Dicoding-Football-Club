@@ -12,7 +12,6 @@ import com.rahmat.app.footballclub.entity.Event
 import com.rahmat.app.footballclub.entity.Team
 import com.rahmat.app.footballclub.entity.db.FavoriteMatch
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
-import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
@@ -23,12 +22,8 @@ import android.provider.CalendarContract
 import com.rahmat.app.footballclub.utils.CalendarHelper
 import android.provider.CalendarContract.Events
 import android.content.Intent
-import android.content.ContentValues
-import android.util.Log
 import android.widget.Toast
-import kotlinx.android.synthetic.main.notification_template_part_time.*
 import java.text.SimpleDateFormat
-import java.util.*
 
 
 /**
