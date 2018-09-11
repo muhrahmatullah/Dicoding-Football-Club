@@ -123,3 +123,5 @@ Kapp/src/main/java/com/rahmat/app/footballclub/feature/team/TeamsContract.kt,9/
 Kapp/src/main/java/com/rahmat/app/footballclub/feature/team/TeamsFragment.kt,d/3/d3b16fedf9b1b9556e977b7590cb6084d01aa0bc
 |
 Lapp/src/main/java/com/rahmat/app/footballclub/feature/team/TeamsPresenter.kt,a/e/ae2374db2157cd29b67634a9acd10b73edc2546d
+v
+Fapp/src/main/java/com/rahmat/app/footballclub/extensions/Extensions.kt,3/1/31210566cd05165dee27953950d090aacb9b4da1

@@ -42,5 +42,5 @@ data class Event(
     @SerializedName("strLocked") var strLocked: String?,
     @SerializedName("strSeason") var strSeason: String?,
     @SerializedName("strSport") var strSport: String?,
-    @SerializedName("strTime") var strTime: String?
+    @SerializedName("strTime") var strTime: String
 ):Parcelable

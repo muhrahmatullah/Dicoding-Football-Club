@@ -110,6 +110,14 @@
             android:layout_gravity="center_horizontal"
             tools:text="28 September 2018"
             android:textColor="@color/pass_match"/>
+        <ImageView
+            android:id="@+id/notifyMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="@dimen/small_padding_6"
+            android:src="@drawable/ic_notifications_active_black_24dp"
+            android:layout_gravity="end"/>
 
     </android.support.v7.widget.CardView>
 </RelativeLayout>
