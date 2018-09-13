@@ -12,7 +12,7 @@ data class Team(
     @SerializedName("idSoccerXML")
     var idSoccerXML: String?,
     @SerializedName("idTeam")
-    var idTeam: String?,
+    var idTeam: String,
     @SerializedName("intFormedYear")
     var intFormedYear: String?,
     @SerializedName("intLoved")
@@ -84,7 +84,7 @@ data class Team(
     @SerializedName("strTeam")
     var strTeam: String?,
     @SerializedName("strTeamBadge")
-    var strTeamBadge: String?,
+    var strTeamBadge: String,
     @SerializedName("strTeamBanner")
     var strTeamBanner: String?,
     @SerializedName("strTeamFanart1")
