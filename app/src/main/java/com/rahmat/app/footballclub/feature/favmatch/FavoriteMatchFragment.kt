@@ -70,5 +70,10 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchContract.View {
         return inflater.inflate(R.layout.fragment_favorite_match, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onDestroyPresenter()
+    }
+
 
 }

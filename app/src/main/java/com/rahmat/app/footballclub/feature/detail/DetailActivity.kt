@@ -12,11 +12,19 @@ import com.rahmat.app.footballclub.entity.Event
 import com.rahmat.app.footballclub.entity.Team
 import com.rahmat.app.footballclub.entity.db.FavoriteMatch
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
-import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
+import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.toast
+import android.provider.CalendarContract.Calendars
+import android.provider.CalendarContract
+import com.rahmat.app.footballclub.utils.CalendarHelper
+import android.provider.CalendarContract.Events
+import android.content.Intent
+import android.widget.Toast
+import java.text.SimpleDateFormat
+
 
 /**
  * Created by muhrahmatullah on 29/08/18.
@@ -48,7 +56,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val service = FootballApiService.getClient().create(FootballRest::class.java)
-        val request = MatchRepositoryImpl(service)
+        val request = TeamRepositoryImpl(service)
         val localRepo = LocalRepositoryImpl(applicationContext)
         mPresenter = DetailPresenter(this, request, localRepo)
 
@@ -118,6 +126,15 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
                 setFavorite()
                 true
             }
+            R.id.notify -> {
+                if(CalendarHelper.haveCalendarReadWritePermissions(this@DetailActivity)){
+                    addEventToGoogleCalendar();
+
+                }else{
+                    CalendarHelper.requestCalendarReadWritePermission(this@DetailActivity);
+                }
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -132,4 +149,77 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     override fun setFavoriteState(favList: List<FavoriteMatch>) {
         if(!favList.isEmpty()) isFavorite = true
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onDestroyPresenter()
+    }
+
+    private fun getGoogleCalendarId(): Long {
+
+        val projection = arrayOf(Calendars._ID, Calendars.NAME, Calendars.ACCOUNT_NAME, Calendars.ACCOUNT_TYPE)
+
+        if (CalendarHelper.haveCalendarReadWritePermissions(this@DetailActivity)) {
+            val calCursor = this.contentResolver
+                    .query(CalendarContract.Calendars.CONTENT_URI, projection,
+                            Calendars.VISIBLE + " = 1", null, Calendars._ID + " ASC")
+
+            if (calCursor!!.moveToFirst()) {
+                do {
+                    val id = calCursor.getLong(0)
+                    return id
+
+                } while (calCursor.moveToNext())
+            }
+        }
+        return -1
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+
+        if (requestCode == CalendarHelper.CALENDARHELPER_PERMISSION_REQUEST_CODE) {
+            if (CalendarHelper.haveCalendarReadWritePermissions(this)) {
+                Toast.makeText(this, "Have Calendar Read/Write Permission.",
+                        Toast.LENGTH_LONG).show()
+
+            }
+
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    private fun addEventToGoogleCalendar() {
+
+        if(event.intHomeScore != null){
+            toast("This event has passed, please choose the upcoming one!")
+        }else {
+            val calId = getGoogleCalendarId()
+            if (calId == -1L) {
+                Toast.makeText(this, "Somethings went wrong, try again!",
+                        Toast.LENGTH_SHORT).show()
+                return
+            }
+            val title = event.strEvent
+            val clock = event.strTime.split("+")[0]
+            val dt = event.dateEvent
+            val dateWithClock = "$dt $clock"
+            val simpleDate = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+            val date = simpleDate.parse(dateWithClock)
+
+            val timeInMillis = date.time
+
+            //add end time to 90 minutes
+            val end = timeInMillis + 5400000
+            val intent = Intent(Intent.ACTION_EDIT)
+            intent.type = "vnd.android.cursor.item/event"
+            intent.putExtra(Events.TITLE, title)
+            intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeInMillis)
+            intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, end)
+            intent.putExtra(Events.EVENT_LOCATION, "Television")
+            startActivity(intent)
+        }
+    }
+
 }

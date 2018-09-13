@@ -34,7 +34,8 @@ class ClubAdapter(val eventList:List<Event>, val context:Context?): RecyclerView
     inner class ClubViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
         fun bind(event:Event){
             if(event.intHomeScore == null) {
-                itemView.dateScheduleTv.setTextColor(itemView.context.getColor(R.color.upcoming_match))
+                itemView.dateScheduleTv.setTextColor(itemView.context.
+                        resources.getColor(R.color.upcoming_match))
             }
             itemView.dateScheduleTv.text = event.dateEvent
             itemView.homeNameTv.text = event.strHomeTeam

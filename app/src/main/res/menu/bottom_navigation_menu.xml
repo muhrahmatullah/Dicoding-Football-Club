@@ -5,13 +5,13 @@
         android:id="@+id/lastMatch"
         android:enabled="true"
         android:title="@string/last_match"
-        android:icon="@drawable/ic_action_last"
+        android:icon="@drawable/ic_action_name"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/upMatch"
         android:enabled="true"
         android:title="@string/upcoming_match"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_menu_teams"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/favMatch"

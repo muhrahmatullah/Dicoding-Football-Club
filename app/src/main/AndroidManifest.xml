@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rahmat.app.footballclub">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -11,15 +13,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.main.MainActivity">
+        <activity
+            android:name=".feature.main.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.detail.DetailActivity"
-            android:parentActivityName=".feature.main.MainActivity"/>
+        <activity
+            android:name=".feature.detail.DetailActivity"
+            android:parentActivityName=".feature.main.MainActivity" />
+        <activity
+            android:name=".feature.teamdetail.TeamDetailActivity"
+            android:parentActivityName=".feature.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".feature.playerdetail.PlayerDetailActivity"
+            android:parentActivityName=".feature.teamdetail.TeamDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

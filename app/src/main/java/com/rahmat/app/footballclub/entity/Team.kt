@@ -1,107 +1,110 @@
 package com.rahmat.app.footballclub.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Team(
 
     @SerializedName("idLeague")
-    var idLeague: String,
+    var idLeague: String?,
     @SerializedName("idSoccerXML")
-    var idSoccerXML: String,
+    var idSoccerXML: String?,
     @SerializedName("idTeam")
     var idTeam: String,
     @SerializedName("intFormedYear")
-    var intFormedYear: String,
+    var intFormedYear: String?,
     @SerializedName("intLoved")
-    var intLoved: String,
+    var intLoved: String?,
     @SerializedName("intStadiumCapacity")
-    var intStadiumCapacity: String,
+    var intStadiumCapacity: String?,
     @SerializedName("strAlternate")
-    var strAlternate: String,
+    var strAlternate: String?,
     @SerializedName("strCountry")
-    var strCountry: String,
+    var strCountry: String?,
     @SerializedName("strDescriptionCN")
-    var strDescriptionCN: Any,
+    var strDescriptionCN: String?,
     @SerializedName("strDescriptionDE")
-    var strDescriptionDE: String,
+    var strDescriptionDE: String?,
     @SerializedName("strDescriptionEN")
-    var strDescriptionEN: String,
+    var strDescriptionEN: String?,
     @SerializedName("strDescriptionES")
-    var strDescriptionES: Any,
+    var strDescriptionES: String?,
     @SerializedName("strDescriptionFR")
-    var strDescriptionFR: Any,
+    var strDescriptionFR: String?,
     @SerializedName("strDescriptionHU")
-    var strDescriptionHU: Any,
+    var strDescriptionHU: String?,
     @SerializedName("strDescriptionIL")
-    var strDescriptionIL: Any,
+    var strDescriptionIL: String?,
     @SerializedName("strDescriptionIT")
-    var strDescriptionIT: String,
+    var strDescriptionIT: String?,
     @SerializedName("strDescriptionJP")
-    var strDescriptionJP: Any,
+    var strDescriptionJP: String?,
     @SerializedName("strDescriptionNL")
-    var strDescriptionNL: Any,
+    var strDescriptionNL: String?,
     @SerializedName("strDescriptionNO")
-    var strDescriptionNO: Any,
+    var strDescriptionNO: String?,
     @SerializedName("strDescriptionPL")
-    var strDescriptionPL: Any,
+    var strDescriptionPL: String?,
     @SerializedName("strDescriptionPT")
-    var strDescriptionPT: Any,
+    var strDescriptionPT: String?,
     @SerializedName("strDescriptionRU")
-    var strDescriptionRU: Any,
+    var strDescriptionRU: String?,
     @SerializedName("strDescriptionSE")
-    var strDescriptionSE: Any,
+    var strDescriptionSE: String?,
     @SerializedName("strDivision")
-    var strDivision: Any,
+    var strDivision: String?,
     @SerializedName("strFacebook")
-    var strFacebook: String,
+    var strFacebook: String?,
     @SerializedName("strGender")
-    var strGender: String,
+    var strGender: String?,
     @SerializedName("strInstagram")
-    var strInstagram: String,
+    var strInstagram: String?,
     @SerializedName("strKeywords")
-    var strKeywords: String,
+    var strKeywords: String?,
     @SerializedName("strLeague")
-    var strLeague: String,
+    var strLeague: String?,
     @SerializedName("strLocked")
-    var strLocked: String,
+    var strLocked: String?,
     @SerializedName("strManager")
-    var strManager: String,
+    var strManager: String?,
     @SerializedName("strRSS")
-    var strRSS: String,
+    var strRSS: String?,
     @SerializedName("strSport")
-    var strSport: String,
+    var strSport: String?,
     @SerializedName("strStadium")
-    var strStadium: String,
+    var strStadium: String?,
     @SerializedName("strStadiumDescription")
-    var strStadiumDescription: String,
+    var strStadiumDescription: String?,
     @SerializedName("strStadiumLocation")
-    var strStadiumLocation: String,
+    var strStadiumLocation: String?,
     @SerializedName("strStadiumThumb")
-    var strStadiumThumb: String,
+    var strStadiumThumb: String?,
     @SerializedName("strTeam")
-    var strTeam: String,
+    var strTeam: String?,
     @SerializedName("strTeamBadge")
     var strTeamBadge: String,
     @SerializedName("strTeamBanner")
-    var strTeamBanner: String,
+    var strTeamBanner: String?,
     @SerializedName("strTeamFanart1")
-    var strTeamFanart1: String,
+    var strTeamFanart1: String?,
     @SerializedName("strTeamFanart2")
-    var strTeamFanart2: String,
+    var strTeamFanart2: String?,
     @SerializedName("strTeamFanart3")
-    var strTeamFanart3: String,
+    var strTeamFanart3: String?,
     @SerializedName("strTeamFanart4")
-    var strTeamFanart4: String,
+    var strTeamFanart4: String?,
     @SerializedName("strTeamJersey")
-    var strTeamJersey: String,
+    var strTeamJersey: String?,
     @SerializedName("strTeamLogo")
-    var strTeamLogo: String,
+    var strTeamLogo: String?,
     @SerializedName("strTeamShort")
-    var strTeamShort: String,
+    var strTeamShort: String?,
     @SerializedName("strTwitter")
-    var strTwitter: String,
+    var strTwitter: String?,
     @SerializedName("strWebsite")
-    var strWebsite: String,
+    var strWebsite: String?,
     @SerializedName("strYoutube")
-    var strYoutube: String? = null
-)
+    var strYoutube: String?
+) : Parcelable

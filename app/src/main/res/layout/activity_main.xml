@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.MainActivity">
 
+
     <ProgressBar
         android:id="@+id/mainProgressBar"
         android:layout_width="80dp"

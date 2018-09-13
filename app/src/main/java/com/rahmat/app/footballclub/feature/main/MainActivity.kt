@@ -3,9 +3,11 @@ package com.rahmat.app.footballclub.feature.main
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.rahmat.app.footballclub.R
+import com.rahmat.app.footballclub.feature.FavoriteFragment
+import com.rahmat.app.footballclub.feature.MatchesFragment
+import com.rahmat.app.footballclub.feature.team.TeamsFragment
 import com.rahmat.app.footballclub.feature.favmatch.FavoriteMatchFragment
-import com.rahmat.app.footballclub.feature.lastmatch.LastMatchFragment
-import com.rahmat.app.footballclub.feature.upcomingmatch.UpcomingMatchFragment
+import kotlinx.android.synthetic.main.bottom_nav_view.*
 import kotlinx.android.synthetic.main.home_activity.*
 
 class MainActivity : AppCompatActivity(), MainContract.View{
@@ -14,10 +16,12 @@ class MainActivity : AppCompatActivity(), MainContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
+        setSupportActionBar(toolbar_main)
+
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                  R.id.lastMatch -> {
-                    loadLastMatch(savedInstanceState)
+                    loadMatch(savedInstanceState)
                 }
                 R.id.upMatch -> {
                     loadUpcomingMatch(savedInstanceState)
@@ -28,15 +32,14 @@ class MainActivity : AppCompatActivity(), MainContract.View{
             }
             true
         }
-
         bottom_navigation.selectedItemId = R.id.lastMatch
     }
 
-    private fun loadLastMatch(savedInstanceState: Bundle?) {
+    private fun loadMatch(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, LastMatchFragment(), LastMatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, MatchesFragment(), MatchesFragment::class.java.simpleName)
                     .commit()
         }
     }
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity(), MainContract.View{
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, UpcomingMatchFragment(), UpcomingMatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, TeamsFragment(), TeamsFragment::class.java.simpleName)
                     .commit()
         }
     }
@@ -54,7 +57,7 @@ class MainActivity : AppCompatActivity(), MainContract.View{
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, FavoriteMatchFragment(), FavoriteMatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
                     .commit()
         }
     }

@@ -13,7 +13,8 @@ interface MatchContract {
     }
 
     interface Presenter{
-        fun getFootballMatchData()
+        fun getFootballMatchData(leagueName: String = "4328")
+        fun onDestroyPresenter()
 
     }
 }

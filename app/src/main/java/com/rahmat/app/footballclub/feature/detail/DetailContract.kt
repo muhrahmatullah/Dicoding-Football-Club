@@ -19,7 +19,7 @@ interface DetailContract {
         fun getTeamsBadgeHome(id:String)
         fun deleteMatch(id:String)
         fun checkMatch(id:String)
-        fun insertMatch(eventId: String, homeId: String, awayId: String
-        )
+        fun insertMatch(eventId: String, homeId: String, awayId: String)
+        fun onDestroyPresenter()
     }
 }

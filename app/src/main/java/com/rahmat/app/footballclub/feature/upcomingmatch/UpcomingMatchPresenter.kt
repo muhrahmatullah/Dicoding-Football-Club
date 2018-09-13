@@ -15,11 +15,16 @@ class UpcomingMatchPresenter(val mView: MatchContract.View,
                              val matchRepositoryImpl: MatchRepositoryImpl,
                              val scheduler: SchedulerProvider) : MatchContract.Presenter {
 
+
+    override fun onDestroyPresenter() {
+        compositeDisposable.dispose()
+    }
+
     val compositeDisposable = CompositeDisposable()
 
-    override fun getFootballMatchData() {
+    override fun getFootballMatchData(leagueName: String) {
         mView.showLoading()
-        compositeDisposable.add(matchRepositoryImpl.getUpcomingMatch("4328")
+        compositeDisposable.add(matchRepositoryImpl.getUpcomingMatch(leagueName)
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
                 .subscribe{

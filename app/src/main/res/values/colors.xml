@@ -7,4 +7,5 @@
     <color name="upcoming_match">#2bfd06</color>
     <color name="pass_match">#fd0606</color>
     <color name="line_separator">#bfbcbc</color>
+    <color name="white">#fff</color>
 </resources>
