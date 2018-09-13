@@ -3,6 +3,7 @@ package com.rahmat.app.footballclub.feature.main
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.rahmat.app.footballclub.R
+import com.rahmat.app.footballclub.feature.FavoriteFragment
 import com.rahmat.app.footballclub.feature.MatchesFragment
 import com.rahmat.app.footballclub.feature.team.TeamsFragment
 import com.rahmat.app.footballclub.feature.favmatch.FavoriteMatchFragment
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(), MainContract.View{
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, FavoriteMatchFragment(), FavoriteMatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
                     .commit()
         }
     }

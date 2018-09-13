@@ -27,9 +27,13 @@
         <activity
             android:name=".feature.detail.DetailActivity"
             android:parentActivityName=".feature.main.MainActivity" />
-        <activity android:name=".feature.teamdetail.TeamDetailActivity"
+        <activity
+            android:name=".feature.teamdetail.TeamDetailActivity"
             android:parentActivityName=".feature.main.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".feature.playerdetail.PlayerDetailActivity"
+            android:parentActivityName=".feature.teamdetail.TeamDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

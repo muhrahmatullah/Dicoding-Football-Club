@@ -1,6 +1,8 @@
 package com.rahmat.app.footballclub.rest
 
 import com.rahmat.app.footballclub.entity.FootballMatch
+import com.rahmat.app.footballclub.entity.FootballPlayer
+import com.rahmat.app.footballclub.entity.PlayerDetail
 import com.rahmat.app.footballclub.entity.Teams
 import io.reactivex.Flowable
 import retrofit2.http.GET
@@ -25,4 +27,11 @@ interface FootballRest {
 
     @GET("lookupevent.php")
     fun getEventById(@Query("id") id:String) : Flowable<FootballMatch>
+
+    @GET("lookup_all_players.php")
+    fun getAllPlayers(@Query("id") id:String?) : Flowable<FootballPlayer>
+
+    @GET("lookupplayer.php")
+    fun getPlayerDetail(@Query("id") id:String?) : Flowable<PlayerDetail>
+
 }

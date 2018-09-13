@@ -36,7 +36,11 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
         setContentView(R.layout.activity_team_detail)
         setSupportActionBar(toolbar)
 
-        team = intent.getParcelableExtra("team")
+        team = if(savedInstanceState != null){
+            savedInstanceState.getParcelable("team")
+        }else{
+            intent.getParcelableExtra("team")
+        }
         val bundle = Bundle()
         bundle.putParcelable("teams", team)
         supportActionBar?.title = team.strTeam
@@ -112,5 +116,11 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
             menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_added_fav_24dp)
         else
             menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_add_fav_24dp)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable("team", team)
+
     }
 }
