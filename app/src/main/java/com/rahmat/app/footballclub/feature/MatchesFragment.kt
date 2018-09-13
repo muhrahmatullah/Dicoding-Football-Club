@@ -14,7 +14,7 @@ import com.rahmat.app.footballclub.adapter.ViewPagerAdapter
 import com.rahmat.app.footballclub.feature.lastmatch.LastMatchFragment
 import com.rahmat.app.footballclub.feature.upcomingmatch.UpcomingMatchFragment
 
-class MatchesFragment : Fragment() {
+class  MatchesFragment : Fragment() {
 
 
 

@@ -19,6 +19,12 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <ProgressBar
+        android:id="@+id/mainProgressBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"/>
+
 
 
 </LinearLayout>

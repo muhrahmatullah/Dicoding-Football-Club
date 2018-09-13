@@ -27,7 +27,7 @@ class DetailPresenter(val mView : DetailContract.View, val teamRepositoryImpl: T
     }
 
     override fun getTeamsBadgeHome(id: String) {
-        compositeDisposable.add(teamRepositoryImpl.getTeams(id)
+        compositeDisposable.add(teamRepositoryImpl.getTeamsDetail(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe{
@@ -38,7 +38,7 @@ class DetailPresenter(val mView : DetailContract.View, val teamRepositoryImpl: T
     val compositeDisposable = CompositeDisposable()
 
     override fun getTeamsBadgeAway(id:String) {
-        compositeDisposable.add(teamRepositoryImpl.getTeams(id)
+        compositeDisposable.add(teamRepositoryImpl.getTeamsDetail(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe{
