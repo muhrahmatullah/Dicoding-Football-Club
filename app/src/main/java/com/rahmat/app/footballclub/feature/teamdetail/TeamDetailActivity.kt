@@ -10,7 +10,7 @@ import com.rahmat.app.footballclub.entity.Team
 import com.rahmat.app.footballclub.feature.players.PlayersFragment
 import com.rahmat.app.footballclub.feature.teamovw.TeamOvwFragment
 import kotlinx.android.synthetic.main.activity_team_detail.*
-import kotlinx.android.synthetic.main.item_teams.view.*
+
 
 class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
 
@@ -24,7 +24,7 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
         team = intent.getParcelableExtra("team")
         val bundle = Bundle()
         bundle.putParcelable("teams", team)
-
+        loadImage()
         val adapter = ViewPagerAdapter(supportFragmentManager)
         val teamFragment = TeamOvwFragment()
         val playersFragment = PlayersFragment()
@@ -34,7 +34,6 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
         adapter.populateFragment(playersFragment, "Players")
         viewpager.adapter = adapter
         tabs.setupWithViewPager(viewpager)
-        loadImage()
     }
 
     private fun loadImage(){

@@ -151,3 +151,5 @@ Papp/src/main/java/com/rahmat/app/footballclub/feature/teamovw/TeamOvwFragment.k
 Vapp/src/main/java/com/rahmat/app/footballclub/feature/teamdetail/TeamDetailActivity.kt,7/c/7cc554cf5be851acd872effe5c3083a533719e10
 €
 Papp/src/main/java/com/rahmat/app/footballclub/feature/players/PlayersFragment.kt,0/b/0bb61d380bb069fea7b2a39da21c60bdd50a3400
+\
+,app/src/main/res/layout/viewpager_layout.xml,1/e/1e566c1e2c53198cf3484e79f18b6acd33c59d77
