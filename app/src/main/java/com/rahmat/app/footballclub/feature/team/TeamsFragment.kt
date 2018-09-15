@@ -1,12 +1,13 @@
 package com.rahmat.app.footballclub.feature.team
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.util.Log
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 
@@ -55,10 +56,10 @@ class TeamsFragment : Fragment(), TeamsContract.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         val service = FootballApiService.getClient().create(FootballRest::class.java)
         val request = TeamRepositoryImpl(service)
         val scheduler = AppSchedulerProvider()
+        setHasOptionsMenu(true)
         mPresenter = TeamsPresenter(this, request, scheduler)
         mPresenter.getTeamData("4328")
         val spinnerItems = resources.getStringArray(R.array.leagueArray)
@@ -84,5 +85,31 @@ class TeamsFragment : Fragment(), TeamsContract.View {
     override fun onDestroyView() {
         super.onDestroyView()
         mPresenter.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu_search, menu)
+        val searchView = menu?.findItem(R.id.actionSearch)?.actionView as SearchView?
+        searchView?.queryHint = "Search team"
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                mPresenter.searchTeam(newText)
+                return false
+            }
+        })
+
+        searchView?.setOnCloseListener(object: SearchView.OnCloseListener{
+            override fun onClose(): Boolean {
+                mPresenter.getTeamData("4328")
+                return true
+            }
+        })
     }
 }

@@ -1,6 +1,7 @@
 package com.rahmat.app.footballclub.entity.repository
 
 import com.rahmat.app.footballclub.entity.FootballMatch
+import com.rahmat.app.footballclub.entity.SearchedMatches
 import com.rahmat.app.footballclub.entity.Teams
 import io.reactivex.Flowable
 
@@ -14,4 +15,6 @@ interface MatchRepository {
     fun getUpcomingMatch(id : String) : Flowable<FootballMatch>
 
     fun getEventById(id: String) : Flowable<FootballMatch>
+
+    fun searchMatches(query: String?) : Flowable<SearchedMatches>
 }

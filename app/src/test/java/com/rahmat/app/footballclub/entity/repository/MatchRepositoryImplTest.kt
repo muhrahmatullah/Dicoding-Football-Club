@@ -41,10 +41,4 @@ class MatchRepositoryImplTest {
         matchRepositoryImpl.getFootballMatch("123")
         verify(footballRest).getLastmatch("123")
     }
-
-    @Test
-    fun getTeams() {
-        matchRepositoryImpl.getTeams("123")
-        verify(footballRest).getTeam("123")
-    }
 }

@@ -9,6 +9,8 @@ import io.reactivex.Flowable
  */
 class TeamRepositoryImpl(val footballRest: FootballRest) : TeamRepository{
 
+    override fun getAllTeam(id: String) = footballRest.getAllTeam(id)
+    override fun getTeamBySearch(query: String) = footballRest.getTeamBySearch(query)
     override fun getTeams(id: String): Flowable<Teams> = footballRest.getAllTeam(id)
     override fun getTeamsDetail(id: String): Flowable<Teams> = footballRest.getTeam(id)
 
