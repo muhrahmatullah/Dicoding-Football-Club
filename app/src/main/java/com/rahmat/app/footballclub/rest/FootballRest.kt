@@ -22,6 +22,9 @@ interface FootballRest {
     @GET("lookupteam.php")
     fun getTeam(@Query("id") id:String) : Flowable<Teams>
 
+    @GET("searchteams.php")
+    fun getTeamBySearch(@Query("t") query: String) : Flowable<Teams>
+
     @GET("lookup_all_teams.php")
     fun getAllTeam(@Query("id") id:String) : Flowable<Teams>
 

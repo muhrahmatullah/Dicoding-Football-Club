@@ -1,6 +1,5 @@
 package com.rahmat.app.footballclub.feature.favteam
 
-import com.rahmat.app.footballclub.entity.Event
 import com.rahmat.app.footballclub.entity.Team
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl

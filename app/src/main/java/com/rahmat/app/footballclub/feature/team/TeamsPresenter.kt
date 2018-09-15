@@ -10,6 +10,18 @@ import io.reactivex.disposables.CompositeDisposable
 class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: TeamRepositoryImpl,
                      val scheduler: SchedulerProvider): TeamsContract.Presenter {
 
+
+    override fun searchTeam(teamName: String) {
+        mView.showLoading()
+        compositeDisposable.add(teamRepositoryImpl.footballRest.getTeamBySearch(teamName)
+                .observeOn(scheduler.ui())
+                .subscribeOn(scheduler.io())
+                .subscribe{
+                    mView.displayTeams(it.teams)
+                    mView.hideLoading()
+                })
+    }
+
     val compositeDisposable = CompositeDisposable()
     override fun getTeamData(leagueName: String) {
         mView.showLoading()

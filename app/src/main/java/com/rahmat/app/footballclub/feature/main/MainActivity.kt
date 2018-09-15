@@ -2,6 +2,9 @@ package com.rahmat.app.footballclub.feature.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.rahmat.app.footballclub.R
 import com.rahmat.app.footballclub.feature.FavoriteFragment
 import com.rahmat.app.footballclub.feature.MatchesFragment
@@ -61,5 +64,4 @@ class MainActivity : AppCompatActivity(), MainContract.View{
                     .commit()
         }
     }
-
 }

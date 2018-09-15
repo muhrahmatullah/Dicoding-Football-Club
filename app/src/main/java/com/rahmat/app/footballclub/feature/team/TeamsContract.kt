@@ -14,6 +14,7 @@ interface TeamsContract {
     }
     interface Presenter{
         fun getTeamData(leagueName: String)
+        fun searchTeam(teamName: String)
         fun onDestroy()
     }
 }
