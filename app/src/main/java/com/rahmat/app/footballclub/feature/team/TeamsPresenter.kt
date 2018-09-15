@@ -13,7 +13,7 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
 
     override fun searchTeam(teamName: String) {
         mView.showLoading()
-        compositeDisposable.add(teamRepositoryImpl.footballRest.getTeamBySearch(teamName)
+        compositeDisposable.add(teamRepositoryImpl.getTeamBySearch(teamName)
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
                 .subscribe{
