@@ -32,6 +32,11 @@ width="256">&nbsp;&nbsp;&nbsp;
  * [x] Insert and delete selected Matches to Database
  * [x] Insert and delete selected Teams to Database
 
+4. App Test
+ * [x] Unit Test
+ * [x] Instrumentation Test
+
+
  ### Use the code
 
  Just fork/clone the repository to your local machine and import it to android studio then you're good to go.
