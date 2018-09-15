@@ -65,20 +65,20 @@ class LastMatchFragment : Fragment(), MatchContract.View {
 
     override fun hideLoading() {
         mainProgressBar.hide()
-        rvFootball.visibility = View.VISIBLE
+        rvFootballLast.visibility = View.VISIBLE
     }
 
     override fun showLoading() {
         mainProgressBar.show()
-        rvFootball.visibility = View.INVISIBLE
+        rvFootballLast.visibility = View.INVISIBLE
     }
 
     override fun displayFootballMatch(matchList: List<Event>) {
         matchLists.clear()
         matchLists.addAll(matchList)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rvFootball.layoutManager = layoutManager
-        rvFootball.adapter = ClubAdapter(matchList, context)
+        rvFootballLast.layoutManager = layoutManager
+        rvFootballLast.adapter = ClubAdapter(matchList, context)
     }
     override fun onDestroy() {
         super.onDestroy()

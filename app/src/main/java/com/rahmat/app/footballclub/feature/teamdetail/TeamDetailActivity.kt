@@ -60,8 +60,8 @@ class TeamDetailActivity : AppCompatActivity(), TeamDetailContract.View {
         playersFragment.arguments = bundle
         adapter.populateFragment(teamFragment, "Team Overview")
         adapter.populateFragment(playersFragment, "Players")
-        viewpager.adapter = adapter
-        tabs.setupWithViewPager(viewpager)
+        viewpagerTeam.adapter = adapter
+        tabs.setupWithViewPager(viewpagerTeam)
     }
 
     private fun loadImage(){

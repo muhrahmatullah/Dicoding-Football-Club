@@ -14,4 +14,6 @@ interface TeamRepository {
     fun getTeamsDetail(id : String = "0") : Flowable<Teams>
 
     fun getTeamBySearch(query: String) : Flowable<Teams>
+
+    fun getAllTeam(id: String) : Flowable<Teams>
 }

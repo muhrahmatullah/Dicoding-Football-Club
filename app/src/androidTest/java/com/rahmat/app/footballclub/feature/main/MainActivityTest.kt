@@ -10,8 +10,7 @@ import org.junit.runner.RunWith
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.swipeDown
+import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -29,11 +28,15 @@ class MainActivityTest {
     @Test
     fun mainActivityTest() {
         delay()
-        onView(withId(rvFootball))
+
+        onView(withId(rvFootballLast))
                 .check(matches(isDisplayed()))
-        onView(withId(rvFootball)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
-        onView(withId(rvFootball)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, click()))
+        delay()
+        onView(withId(rvFootballLast)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(4))
+
+        onView(withId(rvFootballLast)).perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
+        delay()
 
         onView(withId(awayImg)).check(matches(isDisplayed()))
         onView(withId(homeImg)).check(matches(isDisplayed()))
@@ -41,16 +44,18 @@ class MainActivityTest {
         pressBack()
         delay()
 
-        onView(withId(upMatch)).perform(click())
+        onView(withId(viewpager)).perform(swipeLeft())
+
         delay()
-        onView(withId(rvFootball))
-                .check(matches(isDisplayed()))
 
         onView(withId(rvFootball))
                 .check(matches(isDisplayed()))
-        onView(withId(rvFootball)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
+        delay()
+        onView(withId(rvFootball)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(4))
+
         onView(withId(rvFootball)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, click()))
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
+        delay()
 
         onView(withId(awayImg)).check(matches(isDisplayed()))
         onView(withId(homeImg)).check(matches(isDisplayed()))
@@ -60,10 +65,27 @@ class MainActivityTest {
         pressBack()
         delay()
 
-        onView(withId(favMatch)).perform(click())
+        onView(withId(upMatch)).perform(click())
+        delay()
+        onView(withId(rvTeam))
+                .check(matches(isDisplayed()))
+
+        onView(withId(rvTeam))
+                .check(matches(isDisplayed()))
+        onView(withId(rvTeam)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(4))
+        onView(withId(rvTeam)).perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
+
+        onView(withId(imageTeam)).check(matches(isDisplayed()))
 
         delay()
 
+        delay()
+        pressBack()
+
+        onView(withId(favMatch)).perform(click())
+
+        delay()
         onView(withId(rvFootball))
                 .check(matches(isDisplayed()))
 
@@ -80,10 +102,9 @@ class MainActivityTest {
 
         delay()
 
-        onView(withId(swiperefresh)).perform(swipeDown())
+        onView(withId(swiperefreshFav)).perform(swipeDown())
 
         delay()
-
     }
 
     private fun delay(){

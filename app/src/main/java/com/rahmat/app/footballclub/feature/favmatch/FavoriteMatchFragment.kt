@@ -52,14 +52,14 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchContract.View {
         mPresenter = FavoriteMatchPresenter(this, request, localRepositoryImpl, scheduler)
         mPresenter.getFootballMatchData()
 
-        swiperefresh.setOnRefreshListener {
+        swiperefreshFav.setOnRefreshListener {
             mPresenter.getFootballMatchData()
         }
 
     }
 
     override fun hideSwipeRefresh() {
-        swiperefresh.isRefreshing = false
+        swiperefreshFav.isRefreshing = false
         mainProgressBar.hide()
         rvFootball.visibility = View.VISIBLE
     }

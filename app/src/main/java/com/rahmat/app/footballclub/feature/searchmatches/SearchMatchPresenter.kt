@@ -3,6 +3,7 @@ package com.rahmat.app.footballclub.feature.searchmatches
 import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
 import com.rahmat.app.footballclub.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import java.util.*
 
 /**
  * Created by muhrahmatullah on 15/09/18.
@@ -20,7 +21,7 @@ class SearchMatchPresenter(val mView: SearchMatchContract.View,
                 .observeOn(schedulerProvider.ui())
                 .subscribe {
                     mView.hideLoading()
-                    mView.displayMatch(it.events)
+                    mView.displayMatch(it.events ?: Collections.emptyList())
                 })
     }
 
