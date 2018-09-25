@@ -33,6 +33,7 @@ class SearchMatchPresenter(val mView: SearchMatchContract.View,
 
                     override fun onError(t: Throwable?) {
                         mView.displayMatch(Collections.emptyList())
+                        mView.hideLoading()
                     }
 
                 })

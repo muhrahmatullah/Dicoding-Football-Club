@@ -40,6 +40,8 @@ class FavoriteMatchPresenter(val mView: FavoriteMatchContract.View,
 
                         override fun onError(t: Throwable?) {
                             mView.displayFootballMatch(Collections.emptyList())
+                            mView.hideLoading()
+                            mView.hideSwipeRefresh()
                         }
 
                     })

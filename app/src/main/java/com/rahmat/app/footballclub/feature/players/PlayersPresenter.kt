@@ -33,6 +33,7 @@ class PlayersPresenter(val mView: PlayersContract.View,
 
                     override fun onError(t: Throwable?) {
                         mView.displayPlayers(Collections.emptyList())
+                        mView.hideLoading()
                     }
 
                 })

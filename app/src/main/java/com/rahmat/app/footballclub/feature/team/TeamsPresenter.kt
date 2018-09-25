@@ -31,6 +31,7 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
 
                     override fun onError(t: Throwable?) {
                         mView.displayTeams(Collections.emptyList())
+                        mView.hideLoading()
                     }
 
                 })
@@ -54,6 +55,7 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
 
                     override fun onError(t: Throwable?) {
                         mView.displayTeams(Collections.emptyList())
+                        mView.hideLoading()
                     }
 
                 })
