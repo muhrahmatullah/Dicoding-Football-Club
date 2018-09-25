@@ -16,7 +16,7 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
 
 
     override fun searchTeam(teamName: String) {
-        mView.showLoading()
+//        mView.showLoading()
         compositeDisposable.add(teamRepositoryImpl.getTeamBySearch(teamName)
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
