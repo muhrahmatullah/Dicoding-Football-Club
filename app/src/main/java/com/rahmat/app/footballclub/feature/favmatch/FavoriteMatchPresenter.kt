@@ -1,10 +1,13 @@
 package com.rahmat.app.footballclub.feature.favmatch
 
 import com.rahmat.app.footballclub.entity.Event
+import com.rahmat.app.footballclub.entity.FootballMatch
 import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
 import com.rahmat.app.footballclub.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subscribers.ResourceSubscriber
+import java.util.*
 
 /**
  * Created by muhrahmatullah on 03/09/18.
@@ -24,12 +27,23 @@ class FavoriteMatchPresenter(val mView: FavoriteMatchContract.View,
             compositeDisposable.add(matchRepositoryImpl.getEventById(fav.idEvent)
                     .observeOn(scheduler.ui())
                     .subscribeOn(scheduler.io())
-                    .subscribe{
-                        eventList.add(it.events[0])
-                        mView.displayFootballMatch(eventList)
-                        mView.hideLoading()
-                        mView.hideSwipeRefresh()
+                    .subscribeWith(object: ResourceSubscriber<FootballMatch>(){
+                        override fun onComplete() {
+                            mView.hideLoading()
+                            mView.hideSwipeRefresh()
+                        }
+
+                        override fun onNext(t: FootballMatch) {
+                            eventList.add(t.events[0])
+                            mView.displayFootballMatch(eventList)
+                        }
+
+                        override fun onError(t: Throwable?) {
+                            mView.displayFootballMatch(Collections.emptyList())
+                        }
+
                     })
+            )
         }
 
         if(favList.isEmpty()){

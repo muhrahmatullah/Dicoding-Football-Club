@@ -1,8 +1,11 @@
 package com.rahmat.app.footballclub.feature.searchmatches
 
+import com.rahmat.app.footballclub.entity.FootballMatch
+import com.rahmat.app.footballclub.entity.SearchedMatches
 import com.rahmat.app.footballclub.entity.repository.MatchRepositoryImpl
 import com.rahmat.app.footballclub.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subscribers.ResourceSubscriber
 import java.util.*
 
 /**
@@ -19,10 +22,21 @@ class SearchMatchPresenter(val mView: SearchMatchContract.View,
         compositeDisposable.add(matchRepositoryImpl.searchMatches(query)
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
-                .subscribe {
-                    mView.hideLoading()
-                    mView.displayMatch(it.events ?: Collections.emptyList())
+                .subscribeWith(object: ResourceSubscriber<SearchedMatches>(){
+                    override fun onComplete() {
+                        mView.hideLoading()
+                    }
+
+                    override fun onNext(t: SearchedMatches) {
+                        mView.displayMatch(t.events ?: Collections.emptyList())
+                    }
+
+                    override fun onError(t: Throwable?) {
+                        mView.displayMatch(Collections.emptyList())
+                    }
+
                 })
+        )
     }
 
     override fun onDestroy() {

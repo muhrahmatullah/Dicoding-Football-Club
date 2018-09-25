@@ -5,6 +5,7 @@ import com.rahmat.app.footballclub.entity.Teams
 import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subscribers.ResourceSubscriber
 import java.util.*
 
 /**
@@ -19,10 +20,21 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
         compositeDisposable.add(teamRepositoryImpl.getTeamBySearch(teamName)
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
-                .subscribe{
-                    mView.displayTeams(it.teams ?: Collections.emptyList())
-                    mView.hideLoading()
+                .subscribeWith(object: ResourceSubscriber<Teams>(){
+                    override fun onComplete() {
+                        mView.hideLoading()
+                    }
+
+                    override fun onNext(t: Teams) {
+                        mView.displayTeams(t.teams ?: Collections.emptyList())
+                    }
+
+                    override fun onError(t: Throwable?) {
+                        mView.displayTeams(Collections.emptyList())
+                    }
+
                 })
+        )
     }
 
     val compositeDisposable = CompositeDisposable()
@@ -31,10 +43,21 @@ class TeamsPresenter(val mView : TeamsContract.View, val teamRepositoryImpl: Tea
         compositeDisposable.add(teamRepositoryImpl.getAllTeam(leagueName)
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
-                .subscribe{
-                    mView.displayTeams(it.teams)
-                    mView.hideLoading()
+                .subscribeWith(object: ResourceSubscriber<Teams>(){
+                    override fun onComplete() {
+                        mView.hideLoading()
+                    }
+
+                    override fun onNext(t: Teams) {
+                        mView.displayTeams(t.teams ?: Collections.emptyList())
+                    }
+
+                    override fun onError(t: Throwable?) {
+                        mView.displayTeams(Collections.emptyList())
+                    }
+
                 })
+        )
     }
 
     override fun onDestroy() {
