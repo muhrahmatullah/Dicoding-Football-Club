@@ -1,10 +1,15 @@
 package com.rahmat.app.footballclub.feature.detail
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
+import android.provider.CalendarContract.Calendars
+import android.provider.CalendarContract.Events
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.rahmat.app.footballclub.R
@@ -15,14 +20,10 @@ import com.rahmat.app.footballclub.entity.repository.LocalRepositoryImpl
 import com.rahmat.app.footballclub.entity.repository.TeamRepositoryImpl
 import com.rahmat.app.footballclub.rest.FootballApiService
 import com.rahmat.app.footballclub.rest.FootballRest
+import com.rahmat.app.footballclub.utils.CalendarHelper
+import com.rahmat.app.footballclub.utils.DateHelper
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.toast
-import android.provider.CalendarContract.Calendars
-import android.provider.CalendarContract
-import com.rahmat.app.footballclub.utils.CalendarHelper
-import android.provider.CalendarContract.Events
-import android.content.Intent
-import android.widget.Toast
 import java.text.SimpleDateFormat
 
 
@@ -50,7 +51,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
                 .into(homeImg)
     }
 
-    lateinit var mPresenter : DetailPresenter
+    lateinit var mPresenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,19 +69,19 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         supportActionBar?.title = event.strEvent
     }
 
-    fun initData(event:Event){
-        if(event.intHomeScore == null) {
+    fun initData(event: Event) {
+        if (event.intHomeScore == null) {
             dateScheduleTv.setTextColor(applicationContext.getColor(R.color.upcoming_match))
         }
 
-        dateScheduleTv.text = event.dateEvent
+        dateScheduleTv.text = event.dateEvent?.let { DateHelper.formatDateToMatch(it) }
         homeNameTv.text = event.strHomeTeam
         homeScoreTv.text = event.intHomeScore
         awayNameTv.text = event.strAwayTeam
         awayScoreTv.text = event.intAwayScore
 
         homeScorerTv.text = event.strHomeGoalDetails
-        awayScorerTv.text= event.strAwayGoalDetails
+        awayScorerTv.text = event.strAwayGoalDetails
 
         gkHomeTv.text = event.strHomeLineupGoalkeeper
         gkAwayTv.text = event.strAwayLineupGoalkeeper
@@ -113,12 +114,12 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
                 true
             }
             R.id.favorite -> {
-                if (!isFavorite){
+                if (!isFavorite) {
                     mPresenter.insertMatch(
                             event.idEvent, event.idHomeTeam, event.idAwayTeam)
                     toast("Event added to favorite")
                     isFavorite = !isFavorite
-                }else{
+                } else {
                     mPresenter.deleteMatch(event.idEvent)
                     toast("Event removed favorite")
                     isFavorite = !isFavorite
@@ -127,10 +128,10 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
                 true
             }
             R.id.notify -> {
-                if(CalendarHelper.haveCalendarReadWritePermissions(this@DetailActivity)){
+                if (CalendarHelper.haveCalendarReadWritePermissions(this@DetailActivity)) {
                     addEventToGoogleCalendar();
 
-                }else{
+                } else {
                     CalendarHelper.requestCalendarReadWritePermission(this@DetailActivity);
                 }
                 true
@@ -147,7 +148,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     override fun setFavoriteState(favList: List<FavoriteMatch>) {
-        if(!favList.isEmpty()) isFavorite = true
+        if (!favList.isEmpty()) isFavorite = true
     }
 
     override fun onDestroy() {
@@ -192,9 +193,9 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     private fun addEventToGoogleCalendar() {
 
-        if(event.intHomeScore != null){
+        if (event.intHomeScore != null) {
             toast("This event has passed, please choose the upcoming one!")
-        }else {
+        } else {
             val calId = getGoogleCalendarId()
             if (calId == -1L) {
                 Toast.makeText(this, "Somethings went wrong, try again!",
